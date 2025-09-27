@@ -9,7 +9,7 @@ public class Main {
             point.draw(image);
         }
         
-        image.save("test_points.png");
-        System.out.println("Step 1 complete: Basic points rendered!");
+        image.save("image.png");
+        System.out.println("Image rendered!");
     }
 }
