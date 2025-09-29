@@ -1,34 +1,48 @@
 package geometrical_shapes;
+
 import java.awt.Color;
 import java.util.Random;
 
 public class Point implements Drawable {
-    private int x, y;
+    private int x;
+    private int y;
     private Color color;
     private static Random random = new Random();
     
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
-        this.color = generateRandomColor();
+        this.color = Color.BLACK;
     }
     
-    public int getX() { return x; }
-    public int getY() { return y; }
+    public Point(int x, int y, Color color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+    }
     
-    @Override
-    public Color getColor() { return color; }
+    public static Point random(int maxWidth, int maxHeight) {
+        int x = random.nextInt(maxWidth);
+        int y = random.nextInt(maxHeight);
+        Color randomColor = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+        return new Point(x, y, randomColor);
+    }
+    
+    public int getX() {
+        return x;
+    }
+    
+    public int getY() {
+        return y;
+    }
     
     @Override
     public void draw(Displayable displayable) {
         displayable.display(x, y, color);
     }
     
-    public static Point random(int maxWidth, int maxHeight) {
-        return new Point(random.nextInt(maxWidth), random.nextInt(maxHeight));
-    }
-    
-    private Color generateRandomColor() {
-        return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+    @Override
+    public Color getColor() {
+        return color;
     }
 }
